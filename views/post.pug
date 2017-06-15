@@ -1,0 +1,64 @@
+extends ./layout
+block title
+	title Add Post
+	
+block content
+	a(href="/") Home &nbsp; &nbsp;
+	a(href="/post") Post &nbsp; &nbsp;
+	a(href="/logout") Logout
+
+	h2.text-center Welcome #{user.username} !
+	br
+	h2 Add Post
+	form(action="", method="POST")
+		div
+			if error
+				if(error.errors.title)
+					p.text-danger #{error.errors.title.message}
+					label(for="title") Title:
+					input(name="title" value=(post===undefined ? "" : post.title) class="form-control")
+				else
+
+					label(for="title") Title:
+					input(name="title" value=(post===undefined ? "" : post.title) class="form-control")
+
+
+			else
+				label(for="title") Title:
+				input(name="title" value=(post===undefined ? "" : post.title) class="form-control")
+		
+		div
+			if error
+				if(error.errors.description)
+					p.text-danger #{error.errors.description.message}
+					label(for="description") Description:
+					textarea(name="description" value=(post===undefined ? "" : post.description) class="form-control")
+				else
+					label(for="description") Description:
+					textarea(name="description" value=(post===undefined ? "" : post.description) class="form-control")
+
+
+			else
+				label(for="description") Description:
+				textarea(name="description" value=(post===undefined ? "" : post.description) class="form-control")
+		br
+		div
+			if error
+				if(error.errors.link)
+					p.text-danger #{error.errors.link.message}
+					label(for="link") Link :
+					input(name="link" value=(post===undefined ? "" : post.link) class="form-control")
+				else
+					label(for="link") Link :
+					input(name="link" value=(post===undefined ? "" : post.link) class="form-control")
+
+
+			else
+				label(for="link") Link :
+				input(name="link" value=(post===undefined ? "" : post.link) class="form-control")
+		br
+		
+		div
+			button(type="Submit" class="btn btn-warning btn-lg") Add new Post
+		
+

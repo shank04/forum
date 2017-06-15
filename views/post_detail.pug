@@ -1,0 +1,39 @@
+extends ./layout
+block title
+	title post detail
+	meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+	link(href='../css/bootstrap.min.css', rel='stylesheet')
+	link(href='../css/styles.css', rel='stylesheet')
+	script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js')
+	script(src='../js/bootstrap.min.js')
+	script(src='../js/scripts.js')
+block content
+	a(href="/") Home &nbsp; &nbsp;
+	a(href="/post") Post &nbsp; &nbsp;
+	a(href="/logout") Logout
+	h2.text-center Welcome #{user.username} !
+	br
+	h2 #{post.title}
+	small posted by : #{post.user.username}
+	p #{post.description}
+	p.
+		It can be found
+		#[a(href=post.link) here]
+
+	br
+
+	if comments
+		h2 Comments : 
+		for comment in comments
+			p #{comment.data}
+			small posted by : #{comment.user.username} 
+			hr
+	br
+	h3 Leave a Comment
+	form(action="" method="POST")
+		textarea(name="data" class="form-control")
+		br
+		button(type="Submit" class="btn btn-warning btn-lg") Add Comment
+
+	
+

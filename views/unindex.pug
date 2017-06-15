@@ -1,0 +1,20 @@
+extends ./layout
+block title
+	title Home
+
+block content
+	a(href="/") Home &nbsp; &nbsp;
+	a(href="/post") Post &nbsp; &nbsp;
+	a(href="/logout") Logout
+	h2.text-center Welcome #{user.username} !
+	br
+	h2 Posts : 
+	hr
+	for post in posts
+		h4 #{post.title}
+		small posted by : #{post.user.username}
+		p.
+			It can be found :
+			#[a(href=post.link) here]
+		a(href=post.url) view description
+		hr
